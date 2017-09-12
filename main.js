@@ -1,7 +1,10 @@
-var marvelImages = document.getElementsByClassName("marvel-image");
-for (var i = 0; i < marvelImages.length; i++) {
+var imageContainer = document.getElementById('primary-colour');
+var marvelImages = imageContainer.getElementsByClassName("marvel-image");
+var imgLen = marvelImages.length;
+
+for (var i = 0; i < imgLen; i++) {
     marvelImages[i].addEventListener('click', function() {
-			getClickedImage(this);
+     getClickedImage(this);
     }, false);
 };
 
@@ -12,14 +15,17 @@ function getClickedImage(src) {
 
 	console.log(color);
 	console.log(src);
-	document.getElementById('primary-colour').style.backgroundColor = 'rgb(' + color + ')';
+	imageContainer.style.backgroundColor = 'rgb(' + color + ')';
 
 	var output = '';
-	for (var i = 0; i < palettes.length; i++) {
+  var len = palettes.length;
+
+	for (var i = 0; i < len; i++) {
 		output += '<div class="swatch" style="background-color: rgb(' + palettes[i] + ')"></div>';
 	};
 
 	document.getElementById('palettes').innerHTML = '<h1>Your colour scheme</h1>' + output;
+
 	document.getElementById('part1').style.fill = 'rgb(' + color + ')';
 	document.getElementById('part2').style.fill = 'rgb(' + palettes[0] + ')';
 	document.getElementById('part3').style.fill = 'rgb(' + palettes[1] + ')';
